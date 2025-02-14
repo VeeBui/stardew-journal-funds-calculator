@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+ <head>
+   <base target="_top">
+   <style>
+    table {
+      border-collapse: collapse;
+      width: 100%;
+    }
+
+    tr {
+      border-bottom: 1px solid #ddd;
+    }
+    .oneCombo1 {
+      background-color:#D0D6B3;
+    }
+    .oneCombo2 {
+      background-color:#efefef;
+    }
+   </style>
+ </head>
+ <body>
+   <h1>Funds Calculator</h1>
+   <form id="calcForm">
+
+     <label for="Destination">Goal: </label>
+     <input type="number" id="Destination" name="Destination"><br><br>
+
+     <label for="Combo">Maximum Funds: </label>
+     <select name="Combo" id="Combo">
+      <option value=1>1</option>
+      <option value=2>2</option>
+      <option value=3>3</option>
+      <option value=4>4</option>
+     </select><br><br>
+      <button class="submit">Submit</button><br>
+
+     <div class="output"></div>
+
+
+      <!--<input type="button" value="Submit" onclick="submitForm();">-->
+      <script>
+        const output = document.querySelector('.output');
+        const submit = document.querySelector('.submit');
+        submit.addEventListener('click',(e)=> {
+          google.script.run
+            .withSuccessHandler(success)
+            .calcFromFormSubmit(document.getElementById("Destination").value, document.getElementById("Combo").value);
+        })
+
+      function success(data){
+        
+        output.innerHTML = data;
+      }
+      </script>
+   </form>
+
+ </body>
+</html>
