@@ -48,10 +48,12 @@
             .calcFromFormSubmit(document.getElementById("Destination").value, document.getElementById("Combo").value);
         })
 
-      function success(data){
-        
-        output.innerHTML = data;
-      }
+        function failure(data) {
+          output.innerHTML = "<p>Failed. Try a smaller Maximum Funds.</p>";
+        }
+        function success(data){
+          output.innerHTML = data;
+        }
       </script>
    </form>
 
